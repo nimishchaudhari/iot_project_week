@@ -13,15 +13,19 @@ def on_message(client, userdata, message):
 
 
 
-mqttBroker ="test.mosquitto.org"
-client = mqtt.Client("Smartphone")
-client.connect(mqttBroker) 
-client.loop_start()
-client.subscribe("ALPR")
+def initializer(topic="ALPR"):
+    print("Starting init")  
+    mqttBroker ="test.mosquitto.org"
+    client = mqtt.Client("ALPR_inside")
+    client.connect(mqttBroker) 
+    client.loop_start()
+    client.subscribe("ALPR")
 
+    client.on_message=on_message 
+    time.sleep(300)
+    client.loop_stop()
 
-       
-client.on_message=on_message 
-time.sleep(30)
-client.loop_stop()
-#client.loop_forever()
+if __name__ == '__main__':
+
+    initializer()
+    print("Done")
