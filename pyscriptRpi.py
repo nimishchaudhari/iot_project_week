@@ -3,4 +3,3 @@
 #       - When detected, click a picture and send it to MQTT server
 
 
-import 
