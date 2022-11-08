@@ -5,7 +5,7 @@ img_path = "mqtt_onServer/received_image.jpg"
 regions = ['fr'] # Change to your country
 
 
-def get_license_number():
+def get_license_number():    
     with open(img_path, 'rb') as fp:
         response = requests.post(
             'https://api.platerecognizer.com/v1/plate-reader/',

@@ -1,13 +1,15 @@
 import paho.mqtt.client as mqtt
 import time
-import base64, LPR
+import base64, LPR, os
+img = 'mqtt_onServer/received_image.jpg'
 
 def on_message(client, userdata, message):
     #print("received message: " ,str(message.payload.decode("utf-8")))
     msg= message.payload.decode("utf-8")
     encoded_msg = msg.encode("ascii")
     decoded_msg = base64.b64decode(encoded_msg)
-    image_received= open('mqtt_onServer/received_image.jpg','wb')
+    # if os.path.isfile(img):
+    image_received= open(img,'wb')
     image_received.write(decoded_msg)
     print("Image received")
 
@@ -21,8 +23,9 @@ def initializer(topic="ALPR"):
     client.loop_start()
     client.subscribe("ALPR")
 
-    if on_message:
-        client.on_message=on_message 
+    client.on_message=on_message 
+    if os.path.isfile(img):
+    
         print(LPR.get_license_number())               # LP Number 
 
 
