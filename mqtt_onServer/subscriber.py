@@ -20,17 +20,18 @@ def initializer(topic="ALPR"):
     mqttBroker ="test.mosquitto.org"
     client = mqtt.Client("ALPR_inside")
     client.connect(mqttBroker) 
-    client.loop_start()
-    client.subscribe("ALPR")
+    # client.loop_start()
+    client.subscribe(topic)
 
     client.on_message=on_message 
-    if os.path.isfile(img):
+    client.loop_forever()
+    # if os.path.isfile(img):
     
-        print(LPR.get_license_number())               # LP Number 
+        # print(LPR.get_license_number())               # LP Number 
 
 
         # Put this info in MongoDB
-    client.loop_forever()
+    # time.sleep(300)
 
 if __name__ == '__main__':
 
