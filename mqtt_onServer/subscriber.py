@@ -42,8 +42,8 @@ client.loop_stop()
     mqttBroker ="test.mosquitto.org"
     client = mqtt.Client("ALPR_inside")
     client.connect(mqttBroker) 
-    client.loop_start()
-    client.subscribe("ALPR")
+    # client.loop_start()
+    client.subscribe(topic)
 
     client.on_message=on_message 
     print("On message command done")
@@ -51,7 +51,7 @@ client.loop_stop()
     client.loop_stop()
     if os.path.isfile(img):
     
-        print(LPR.get_license_number())               # LP Number 
+        # print(LPR.get_license_number())               # LP Number 
 
 
         # Put this info in MongoDB
