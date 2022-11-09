@@ -1,12 +1,12 @@
 # License plate detection
 import json,requests
 from pprint import pprint
-img_path = "mqtt_onServer/received_image.jpg"
+# path = "mqtt_onServer/received_image.jpg"
 regions = ['fr'] # Change to your country
 
 
-def get_license_number():    
-    with open(img_path, 'rb') as fp:
+def get_license_number(path="mqtt_onRPI/photo.jpg"):    
+    with open(path, 'rb') as fp:
         response = requests.post(
             'https://api.platerecognizer.com/v1/plate-reader/',
             # data=dict(regions=['fin'], config=json.dumps(dict(region="strict"))),  # Optional
