@@ -12,14 +12,6 @@ def on_message(client, userdata, message):
     print("message received")
 
 
-""" 
-    message = str(message.payload.decode("utf-8"))
-    decoded_msg = base64.b64decode(message)
-    image_received= open('received_image.jpg','wb').write(decoded_msg)
-    print("image received")
-
-    image_received.close()
- """
 
 mqttBroker ="test.mosquitto.org"
 client = mqtt.Client("Smartphone")
@@ -27,9 +19,6 @@ client.connect(mqttBroker)
 client.loop_start()
 client.subscribe("ALPR")
 
-
-""" def on_message(client, userdata, message):
-    print("received message: " ,str(message.payload.decode("utf-8"))) """
        
 client.on_message=on_message 
 time.sleep(30)

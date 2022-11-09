@@ -8,7 +8,6 @@ mqttBroker ="test.mosquitto.org"
 client = mqtt.Client("ALPR_inside")
 client.connect(mqttBroker) 
 
-
 with open("car.jpg", "rb") as img_file:
     my_string = base64.b64encode(img_file.read())
     
