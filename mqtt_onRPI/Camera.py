@@ -23,12 +23,13 @@ camera.rotation = 180
 
 #take photo when motion is detected
 
-def take_photo():
+def take_photo(path="mqtt_onRPI/photo.jpg"):
     print("Clicking in 3 secs")
     sleep(3)
-    camera.capture('/home/pi/iot_project_week/mqtt_onRPI/car.jpg')
+    camera.capture(path)
     print('A photo has been taken')
     camera.close()
+    return path
 
 #assign a function that runs when the button is pressed
 # button.when_pressed = stop_camera
