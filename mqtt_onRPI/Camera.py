@@ -23,7 +23,7 @@ camera.rotation = 180
 
 #take photo when motion is detected
 
-def take_photo(path="mqtt_onRPI/photo.jpg"):
+def take_photo(path="photo.jpg"):
     print("Clicking in 3 secs")
     sleep(3)
     camera.capture(path)
